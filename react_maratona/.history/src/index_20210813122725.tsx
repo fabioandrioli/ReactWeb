@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './service/firebase';
 
-import './styles/global.scss'
+import './styles/globals.scss'
 
 ReactDOM.render(
   <React.StrictMode>

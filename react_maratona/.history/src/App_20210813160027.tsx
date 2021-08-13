@@ -5,21 +5,10 @@ import { HomePage } from './pages/HomePage';
 import {NewRoom} from './pages/NewRoom';
 import {BrowserRouter,Route} from 'react-router-dom';
 
-type UserType = {
-  id: String,
-  name: String,
-  avatar: String,
-}
-
-type AuthContextType = {
-  user:UserType | undefined,
-  siginWithGoogle: () => void,
-}
-
-export const AuthContext = createContext({} as AuthContextType)
+export const AuthContext = createContext('')
 
 function App() {
-  const [user,setUser] = useState<UserType>();
+  const [user,setUser] = useState();
 
   function siginWithGoogle(){
     const provider = new firebase.auth.GoogleAuthProvider();

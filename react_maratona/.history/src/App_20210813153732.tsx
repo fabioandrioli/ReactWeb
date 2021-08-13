@@ -5,21 +5,10 @@ import { HomePage } from './pages/HomePage';
 import {NewRoom} from './pages/NewRoom';
 import {BrowserRouter,Route} from 'react-router-dom';
 
-type UserType = {
-  id: String,
-  name: String,
-  avatar: String,
-}
-
-type AuthContextType = {
-  user:UserType | undefined,
-  siginWithGoogle: () => void,
-}
-
-export const AuthContext = createContext({} as AuthContextType)
+export const AuthContext = createContext('')
 
 function App() {
-  const [user,setUser] = useState<UserType>();
+  const {user,setUser} = useState();
 
   function siginWithGoogle(){
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -32,12 +21,6 @@ function App() {
             throw new Error("Missing information from Google Account.");
           }
 
-          setUser({
-            id: uid,
-            name:displayName,
-            avatar: photoURL,
-          })
-
         }
     })
   }
@@ -45,7 +28,7 @@ function App() {
   return (
     <BrowserRouter>
       {/** tudo o que está dentro do provide consegue enxegar o valor do contexto */}
-      <AuthContext.Provider value={{user,siginWithGoogle}}>
+      <AuthContext.Provider value={'Auth'}>
         <Route path="/" exact component={HomePage}/>
         <Route path="/rooms/new"  component={NewRoom}/>
       </AuthContext.Provider>

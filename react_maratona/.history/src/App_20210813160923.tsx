@@ -12,7 +12,7 @@ type UserType = {
 }
 
 type AuthContextType = {
-  user:UserType | undefined,
+  user:UserType,
   siginWithGoogle: () => void,
 }
 

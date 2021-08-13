@@ -12,14 +12,14 @@ type UserType = {
 }
 
 type AuthContextType = {
-  user:UserType | undefined,
+  user:Object,
   siginWithGoogle: () => void,
 }
 
 export const AuthContext = createContext({} as AuthContextType)
 
 function App() {
-  const [user,setUser] = useState<UserType>();
+  const [user,setUser] = useState();
 
   function siginWithGoogle(){
     const provider = new firebase.auth.GoogleAuthProvider();
