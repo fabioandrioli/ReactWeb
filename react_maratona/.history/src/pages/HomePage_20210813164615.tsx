@@ -12,12 +12,9 @@ import { Button } from '../components/Button';
 
 export function HomePage(){
     const history = useHistory();
-    const {user, siginWithGoogle} = useContext(AuthContext)
+    const {siginWithGoogle} = useContext(AuthContext)
 
-    async function handleCreateRoom(){
-        if(!user){
-            await siginWithGoogle()
-        }
+    function handleCreateRoom(){
         history.push("/rooms/new");
     }
 
