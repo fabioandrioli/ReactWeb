@@ -14,11 +14,11 @@ type UserType = {
   
 export const AuthContext = createContext({} as AuthContextType)
 
-type AuthContextProvider = {
+type AuthContextProviderProps = {
     children:ReactNode
 }
 
-export function AuthContextProvider(props: AuthContextProvider){
+export function AuthContextProvider(props: AuthContextProviderProps){
     const [user,setUser] = useState<UserType>();
 
     // useEffect(() => {
