@@ -17,6 +17,7 @@ export function NewRoom() {
 
   const history = useHistory();
   const [newRoom, setNewRoom] = useState('')
+  const [roomCode, setRoomCode] = useState('')
   async function handleCreateRoom(event: FormEvent){
     event.preventDefault();
     if(newRoom.trim() === ''){
