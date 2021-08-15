@@ -16,6 +16,8 @@ export function HomePage(){
         if(!user){
             await siginWithGoogle()
         }
+
+        //Todo await espera um requisição de sucesso, caso não seja, ele não deixa passar.
         history.push("/rooms/new");
     }
 

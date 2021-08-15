@@ -6,10 +6,6 @@ import logoImg from '../assets/images/logo.svg';
 import '../styles/room.scss';
 
 
-type RoomParams = {
-  id: string;
-}
-
 export function Room() {
  
 

@@ -4,15 +4,25 @@ import "firebase/auth";
 import "firebase/database";
 
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDORJu6YZKb-jxxelYgX2v0VB3lrClUQC4",
-    authDomain: "maratonanode.firebaseapp.com",
-    databaseURL: "https://maratonanode-default-rtdb.firebaseio.com",
-    projectId: "maratonanode",
-    storageBucket: "maratonanode.appspot.com",
-    messagingSenderId: "1003507279310",
-    appId: "1:1003507279310:web:1f6d4cf399a769f3d7f79f"
-};
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDORJu6YZKb-jxxelYgX2v0VB3lrClUQC4",
+//     authDomain: "maratonanode.firebaseapp.com",
+//     databaseURL: "https://maratonanode-default-rtdb.firebaseio.com",
+//     projectId: "maratonanode",
+//     storageBucket: "maratonanode.appspot.com",
+//     messagingSenderId: "1003507279310",
+//     appId: "1:1003507279310:web:1f6d4cf399a769f3d7f79f"
+// };
+
+var firebaseConfig = {
+    apiKey: "AIzaSyBtB1XF64BYh-wp1Z-DuhDYf3-12IEa_y0",
+    authDomain: "maratona-34e7d.firebaseapp.com",
+    databaseURL: "https://maratona-34e7d-default-rtdb.firebaseio.com",
+    projectId: "maratona-34e7d",
+    storageBucket: "maratona-34e7d.appspot.com",
+    messagingSenderId: "585567873039",
+    appId: "1:585567873039:web:05936b052909bd846adb7a"
+  };
 
 // const firebaseConfig = {
 //     apiKey: process.env.REACT_APP_API_KEY,
