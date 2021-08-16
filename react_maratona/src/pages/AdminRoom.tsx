@@ -4,6 +4,8 @@ import {useHistory, useParams} from 'react-router-dom';
 import logoImg from '../assets/images/logo.svg';
 import { Button } from '../components/Button';
 import deleteImage from '../assets/images/delete.svg'
+import checkImg from '../assets/images/check.svg'
+import answerImg from '../assets/images/answer.svg'
 
 
 import '../styles/room.scss';
@@ -37,6 +39,18 @@ export function AdminRoom() {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
     }
   }
+
+  async function  handleCheckQuestionAsAnswered(questionId: string){
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true
+    })
+  }
+
+  async function handleHiglightQuestion(questionId: string){
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighlighted:true
+    })
+  }
   
   // const {user} = useAuth()
   const params = useParams<RoomParamsType>();
@@ -69,12 +83,28 @@ export function AdminRoom() {
                 key={question.id}
                 content={question.content}
                 author={question.author}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               > 
+                <button
+                  type="button"
+                  onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                >
+                  <img src={checkImg} alt="Marcar pergunta como respondida" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleHiglightQuestion(question.id)}
+                >
+                  <img src={answerImg} alt="Dar destaque à pergunta" />
+                </button>
+
                 <button
                   type="button"
                   onClick={() => handleDeleteQuestion(question.id)}
                 >
-                  <img src={deleteImage} alt="remover pergunta" />g
+                  <img src={deleteImage} alt="remover pergunta" />
                 </button>
               </Question>
             )
