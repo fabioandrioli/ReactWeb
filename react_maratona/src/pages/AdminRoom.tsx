@@ -1,8 +1,9 @@
 
 
-import {useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import logoImg from '../assets/images/logo.svg';
 import { Button } from '../components/Button';
+import deleteImage from '../assets/images/delete.svg'
 
 
 import '../styles/room.scss';
@@ -13,6 +14,7 @@ import { database } from '../service/firebase';
 import { Question } from './../components/Question/Question';
 import { useRoom } from '../hooks/useRoom';
 
+
 type RoomParamsType = {
   id: string,
 }
@@ -21,7 +23,20 @@ type RoomParamsType = {
 
 
 export function AdminRoom() {
+  const history = useHistory();
+  async function handleEndRoom(){
+    database.ref(`rooms/${roomId}`).update({
+      endedAt: new Date(),
+    })
 
+    history.push("/")
+  }
+
+  async function handleDeleteQuestion(questionId: string){
+    if (window.confirm('Você tem certeza de que deseja excluir essa pergunta')){
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+    }
+  }
   
   // const {user} = useAuth()
   const params = useParams<RoomParamsType>();
@@ -35,7 +50,7 @@ export function AdminRoom() {
           <img src={logoImg} alt="Letmeask" />
           <RoomCode code={params.id}/>
          <div>
-          <Button type="submit" isOutlined>Encerra sala</Button>
+          <Button type="submit" onClick={handleEndRoom} isOutlined>Encerra sala</Button>
          </div>
         </div>
       </header>
@@ -54,7 +69,14 @@ export function AdminRoom() {
                 key={question.id}
                 content={question.content}
                 author={question.author}
-              />
+              > 
+                <button
+                  type="button"
+                  onClick={() => handleDeleteQuestion(question.id)}
+                >
+                  <img src={deleteImage} alt="remover pergunta" />g
+                </button>
+              </Question>
             )
           })}
         </div>
