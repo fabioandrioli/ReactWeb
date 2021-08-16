@@ -22,7 +22,7 @@ var firebaseConfig = {
     storageBucket: "maratona-34e7d.appspot.com",
     messagingSenderId: "585567873039",
     appId: "1:585567873039:web:05936b052909bd846adb7a"
-};
+  };
 
 // const firebaseConfig = {
 //     apiKey: process.env.REACT_APP_API_KEY,

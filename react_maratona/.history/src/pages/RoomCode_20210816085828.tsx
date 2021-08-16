@@ -1,0 +1,1 @@
+import copyImg from '../assets/images/copy.svg'
